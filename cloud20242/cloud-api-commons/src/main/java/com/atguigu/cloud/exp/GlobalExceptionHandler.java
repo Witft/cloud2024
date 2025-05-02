@@ -15,8 +15,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResultData<String> handleException(Exception e) {
-        log.error("全局异常信息：");
-        log.error(e.getMessage(), e);
+        log.error("全局异常信息：{}", e.getMessage(), e);
         return ResultData.fail(ReturnCodeEnum.RC500.getCode(), e.getMessage());
     }
 

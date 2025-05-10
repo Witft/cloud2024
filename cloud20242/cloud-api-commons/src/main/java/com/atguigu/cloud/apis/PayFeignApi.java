@@ -2,6 +2,7 @@ package com.atguigu.cloud.apis;
 
 import com.atguigu.cloud.entities.PayDTO;
 import com.atguigu.cloud.resp.ResultData;
+import lombok.Getter;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,4 +50,20 @@ public interface PayFeignApi {
      */
     @GetMapping(value = "/pay/bulkhead/{id}")
     public String myBulkhead(@PathVariable("id") Integer id);
+
+    /**
+     * Resilience4j Ratelimit 的例子
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "/pay/ratelimit/{id}")
+    public String myRatelimit(@PathVariable("id") Integer id);
+
+    /**
+     * Micrometer 进行链路监控的例子
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "/pay/micrometer/{id}")
+    public String myMicrometer(@PathVariable("id") Integer id);
 }

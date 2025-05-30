@@ -18,7 +18,7 @@ public interface PayFeignApi {
      * @return
      */
     @PostMapping("/pay/add")
-    public ResultData addPayment(@RequestBody PayDTO payDTO);
+    ResultData addPayment(@RequestBody PayDTO payDTO);
 
     /**
      * 获取一条支付流水记录
@@ -26,14 +26,14 @@ public interface PayFeignApi {
      * @return
      */
     @GetMapping("/pay/get/{id}")
-    public ResultData getPayInfo(@PathVariable("id") Integer id);
+    ResultData getPayInfo(@PathVariable("id") Integer id);
 
     /**
      * OpenFeign负载均衡演示
      * @return
      */
     @GetMapping("/pay/get/consul/config")
-    public String myLB();
+    String myLB();
 
     /**
      * Resilience4j CircuitBreaker 例子
@@ -41,7 +41,7 @@ public interface PayFeignApi {
      * @return
      */
     @GetMapping("/pay/circuit/{id}")
-    public String myCircuit(@PathVariable("id") Integer id);
+    String myCircuit(@PathVariable("id") Integer id);
 
     /**
      * Resilience4j Bulkhead 的例子
@@ -49,7 +49,7 @@ public interface PayFeignApi {
      * @return
      */
     @GetMapping(value = "/pay/bulkhead/{id}")
-    public String myBulkhead(@PathVariable("id") Integer id);
+    String myBulkhead(@PathVariable("id") Integer id);
 
     /**
      * Resilience4j Ratelimit 的例子
@@ -57,7 +57,7 @@ public interface PayFeignApi {
      * @return
      */
     @GetMapping(value = "/pay/ratelimit/{id}")
-    public String myRatelimit(@PathVariable("id") Integer id);
+    String myRatelimit(@PathVariable("id") Integer id);
 
     /**
      * Micrometer 进行链路监控的例子
@@ -65,7 +65,7 @@ public interface PayFeignApi {
      * @return
      */
     @GetMapping(value = "/pay/micrometer/{id}")
-    public String myMicrometer(@PathVariable("id") Integer id);
+    String myMicrometer(@PathVariable("id") Integer id);
 
     /**
      * GateWay进行网关测试案例01
@@ -73,12 +73,12 @@ public interface PayFeignApi {
      * @return
      */
     @GetMapping(value = "/pay/gateway/get/{id}")
-    public ResultData getById(@PathVariable("id") Integer id);
+    ResultData getById(@PathVariable("id") Integer id);
 
     /**
      * GateWay进行网关测试案例02
      * @return
      */
     @GetMapping(value = "/pay/gateway/info")
-    public ResultData<String> getGatewayInfo();
+    ResultData<String> getGatewayInfo();
 }
